@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+<!--Title-->
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+<!--Header Section-->
+<div class="container">
+    <h2 class='center'>
+        Welcome to..
+        <div style='font-family: Amaranth; color:#42a5f5; margin-top: 10px;'> DiTo!</div>
+    </h2>
+    <h5 class='center light'>Your personalized Diary and To-Do List app!</h5>
+    <h5 class="center light">Manage your tasks and your daily feed much more conviniently!</h5>
+</div>
+
+<br>
+<div class="divider container"></div>
+<br>
+
+
+<!--App-display section-->
+<div class="row container">
+
+
+    <div class="col s12 m6 hoverable">
+        <center><i class="material-icons medium" style='color:red; margin-top: 10px;'>book</i></center>
+
+        <h5 class='center light'>Diary</h5>
+
+        <p class="center light" style='margin-top: 20px;'>
+            Record your daily experiences in the form of an e-diary which henceforth become memories in the future!
+        </p>
+        <br>
+
+        <center><a href='/todo' class='btn btn-block green accent-3' style='font-size:large;'>Go to Diary</a></center>
+        <br>
+    </div>
+
+
+    <div class="col s12 m6 hoverable">
+
+        <center><i class="material-icons medium" style='color:#1de9b6; margin-top: 10px;'>format_list_bulleted</i></center>
+
+        <h5 class='center'>To-do List</h5>
+
+        <p class="center light" style='margin-top: 20px;'>
+            Plan your day out with a to-do list and strategize your day to stay on top and achieve your goals!
+        </p>
+        <br>
+
+        <center><a href='/todo' class='btn btn-block cyan' style='font-size:large;'>Go to To-Do list</a></center>
+        <br>
+    </div>
+</div>
+
+{% endblock body %}
