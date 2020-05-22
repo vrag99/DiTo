@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Edit Diary
+{% endblock title %}
+
+{% block body %}
+
+  <div class="container">
+    <h2 class="center">Edit Diary</h2>
+    <div class="divider"></div>
+
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col s12 m6 input-field">
+                <input type="text" class='validate' id="edit-title" name='edit-title' data-length="100" value='{{diary.title}}'>
+                <label for="edit-title">Title</label>
+            </div>
+
+            <div class="col s12 m6 input-field">
+                <input type="text" class='validate' data-length="20" id="edit-author" name="edit-author" value='{{diary.author}}'>
+                <label for="edit-author">Author name</label>
+            </div>
+
+            <div class="col s12 m12 input-field">
+                <textarea id='edit-content' name="edit-content" class='materialize-textarea'>{{diary.content}}</textarea>
+                <label for="edit-content">Content</label>
+            </div>
+
+            <div class="col s12 m12 input-field">
+                <center>
+                    <button class="btn btn-large blue accent-3 waves-effect waves-light" style='width:100%; font-size: large;' type='submit'>
+                        Edit
+                    </button>
+                </center>
+            </div>
+
+    </form>
+  </div>
+
+{% endblock body %}

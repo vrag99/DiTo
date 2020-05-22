@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Diary
+{% endblock title %}
+
+{% block body %}
+
+  <div class="container">
+    <h2>Diary 
+        <span>
+            <a href="/diary/new" class="btn-floating btn-large green accent-3 right tooltipped"  data-position="left" data-tooltip="Add diary">
+                <i class='material-icons'>add</i>
+            </a>
+        </span>
+    </h2>
+
+    <div class="divider"></div>
+
+    {% for diary in diaries %}
+
+    <h4>{{diary.title}}</h4>
+    <h6 class='light'>Written by {{diary.author}} on {{diary.time}}</h6>
+    <p style='font-size: larger; margin-top: 20px; white-space:pre-wrap'>{{diary.content}}</p>
+    
+    <br>
+    <a href="/diary/del/{{diary.id}}" class="btn-floating btn-small red" style='margin-right: 15px;'><i class="material-icons">delete</i></a>
+    <a href="/diary/edit/{{diary.id}}" class="btn-floating btn-small blue"><i class="material-icons">edit</i></a>
+
+    <br> <br>
+    <div class="divider"></div>
+    
+    {% endfor %}
+  </div>
+
+{% endblock body %}

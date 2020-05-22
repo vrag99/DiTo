@@ -51,6 +51,16 @@
         AOS.init({
             duration:800,
         })
+        
+        $(document).ready(function(){
+            $('.tooltipped').tooltip();
+        });
+
+
+        $(document).ready(function() {
+            $('input#author, input#title').characterCounter();
+        });
+        
     </script>
 </body>
 </html>

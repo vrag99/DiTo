@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+  New Diary
+{% endblock title %}
+
+{% block body %}
+
+  <div class="container">
+    <h2 class="center">New Diary</h2>
+    <div class="divider"></div>
+
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col s12 m6 input-field">
+                <input type="text" class='validate' id="title" name='title' data-length="100" required>
+                <label for="title">Title</label>
+            </div>
+
+            <div class="col s12 m6 input-field">
+                <input type="text" class='validate' data-length="20" id="author" name="author" required>
+                <label for="author">Author name</label>
+            </div>
+
+            <div class="col s12 m12 input-field">
+                <textarea id='content' name="content" class='materialize-textarea' required></textarea>
+                <label for="content">Content</label>
+            </div>
+
+            <div class="col s12 m12 input-field">
+                <center>
+                    <button class="btn btn-large green accent-3 waves-effect waves-light" style='width:100%; font-size: large;' type='submit'>
+                        Post
+                    </button>
+                </center>
+            </div>
+
+    </form>
+  </div>
+
+{% endblock body %}
