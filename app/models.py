@@ -17,7 +17,7 @@ class Diary(models.Model):
 
 
 class ToDo(models.Model):
-    task = models.TextField(null = False)
+    task = models.TextField(null=False)
     time = models.DateTimeField(auto_now=True)
 
     def __str__(self):

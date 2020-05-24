@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {% block title %}
-          
-        {% endblock title %}
+        {% block title %} {% endblock title %}
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
+
 <body>
-    
+
     <div class='navbar-fixed'>
         <nav class="black">
             <div class="nav-wrapper container">
-                <a href = '/' class="brand-logo center" style="font-family: 'Amaranth';">DiTo</a>
-                <a href="#" data-target="nav-options" class="sidenav-trigger show-on-large" style="outline: none;"><i class="material-icons">menu</i></a>
+                <a href='/' class="brand-logo center" style="font-family: 'Amaranth';">DiTo</a>
+                <a href="#" data-target="nav-options" class="sidenav-trigger show-on-large" style="outline: none;">
+                    <i class="material-icons">menu</i>
+                </a>
             </div>
         </nav>
     </div>
 
     <ul class="sidenav" id="nav-options">
-        <li><div class="user-view">
-            <div class="background">
-                <img src="https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg" heigth='150'>
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg" heigth='150'>
+                </div>
             </div>
-        </div></li>
+        </li>
         <li><a href="/">Home</a></li>
         <li><a href="/diary">Diary</a></li>
-        <li><a href="/todo">To-Do list</a></li>
+        <li><a href="/tasks">To-Do list</a></li>
     </ul>
-          
-    
-    {% block body %}
-      
-    {% endblock body %}
+
+
+    {% block body %} {% endblock body %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.sidenav').sidenav();
-        });
-
-        AOS.init({
-            duration:800,
-        })
-        
-        $(document).ready(function(){
-            $('.tooltipped').tooltip();
-        });
-
-
         $(document).ready(function() {
+            $('.sidenav').sidenav();
+            $('.tooltipped').tooltip();
             $('input#author, input#title').characterCounter();
         });
-        
+
+        {% block script %}
+
+        {% endblock script %}
     </script>
 </body>
+
 </html>

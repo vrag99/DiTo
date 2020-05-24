@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Diary
+from .models import Diary, ToDo
 
 # Create your views here.
 
@@ -56,3 +56,51 @@ def editDiary(request, id):
         return redirect('/diary')
     else:
         return render(request, 'edit_diary.html', {'diary':req_post})
+
+
+
+#Todo list
+def taskPage(request):
+    """
+    Reads the registered tasks from the database and passes it onto the 
+    html page..
+    """
+    return render(request, 'todo_list.html', {'tasks':ToDo.objects.all()})
+
+
+def newTask(request):
+    """
+    Save the new task if posted otherwise display the new task modal..
+    """
+    if request.method == 'POST':
+        new_task = request.POST.get('newTask')
+        ToDo(task = new_task).save()
+        return redirect('/tasks')
+    else:
+        return render(request, 'todo_list.html', {'tasks':ToDo.objects.all(), 'new':True,})
+
+
+def delTask(request, id):
+    """
+    Deletes the required task via passed id..
+    """
+    ToDo.objects.get(id=id).delete()
+    return redirect('/tasks')
+
+
+def editTask(request, id):
+    """
+    Gets the modal for editing the requitred task and changes 
+    the params onto the database.. 
+    """
+    req_task = ToDo.objects.get(id=id)
+    if request.method == 'POST':
+        req_task.task = request.POST.get('editTask')
+        req_task.save()
+        return redirect('/tasks')
+    else:
+        return render(request, 'todo_list.html', {
+            'tasks':ToDo.objects.all(), 
+            'edit':True, 
+            'edit_task':req_task,
+        })

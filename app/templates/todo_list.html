@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Tasks
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <h2>Tasks
+            <span>                
+                <a href="/tasks/new" class="btn-floating btn-large green accent-3 right modal-trigger tooltipped" data-tooltip="Add task" data-position="left">
+                    <i class="material-icons">add</i>
+                </a>                
+            </span>
+        </h2>
+        <div class="divider"></div> 
+        <br>
+
+        <table class='highlight'>
+        {% for task in tasks %}
+            <tbody>
+                <tr>
+                    <td class='center' style='font-size: x-large;'><span style='white-space: pre-wrap;'>{{task.task}}</span>
+                        <span class='right'>
+                            <a href="/tasks/del/{{task.id}}" class='btn-floating btn-small green'>
+                                <i class="material-icons">check</i>
+                            </a>
+                            <a href="/tasks/edit/{{task.id}}" class='btn-floating btn-small cyan' style='margin-left:5px;'>
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </span>
+                    </td>
+                </tr> 
+            </tbody>         
+        {% endfor %}
+        </table>
+
+        
+        <div class="modal fixed" id="new-task">
+            <div class="modal-content">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <textarea name="newTask" class="materialize-textarea" required></textarea>
+                        <label for="newTask">New Task</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="submit" class="btn green accent-4" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="modal fixed" id="edit-task">
+            <div class="modal-content">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <input type="text" class="validate" id="editTask" name="editTask" value="{{edit_task.task}}">
+                        <label for="newTask">Edit Task</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="submit" class="btn blue accent-2" value="Edit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock body %}
+
+{% block script %}
+    $('.modal').modal();
+
+    {% if new %}
+        $('.modal#new-task').modal('open');
+    {% endif %}
+
+    {% if edit %}
+        $('.modal#edit-task').modal('open');
+    {% endif %}
+{% endblock script %}
