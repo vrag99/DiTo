@@ -5,6 +5,8 @@
 {% endblock title %}
 
 {% block body %}
+
+    <!--Header region with 'add task' button-->
     <div class="container">
         <h2>Tasks
             <span>                
@@ -16,6 +18,8 @@
         <div class="divider"></div> 
         <br>
 
+        <!--If there are tasks, display them in the form of table-->
+        {% if tasks %}
         <table class='highlight'>
         {% for task in tasks %}
             <tbody>
@@ -35,7 +39,13 @@
         {% endfor %}
         </table>
 
-        
+        <!--Otherwise give this message-->
+        {% else %}
+        <h4 class="container center">No tasks.. Add one!</h4>
+        {% endif %}
+
+
+        <!--Modal triggered for adding tasks-->
         <div class="modal fixed" id="new-task">
             <div class="modal-content">
                 <form method="POST">
@@ -51,7 +61,7 @@
             </div>
         </div>
 
-
+        <!--Modal triggered for editing tasks-->
         <div class="modal fixed" id="edit-task">
             <div class="modal-content">
                 <form method="POST">
@@ -72,13 +82,13 @@
 {% endblock body %}
 
 {% block script %}
-    $('.modal').modal();
+    $('.modal').modal(); <!--Initialize modal-->
 
     {% if new %}
-        $('.modal#new-task').modal('open');
+        $('.modal#new-task').modal('open'); <!--Initiate the new-task modal if request is sent-->
     {% endif %}
 
     {% if edit %}
-        $('.modal#edit-task').modal('open');
+        $('.modal#edit-task').modal('open'); <!--Initiate the edit-task modal if request is sent-->
     {% endif %}
 {% endblock script %}
