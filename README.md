@@ -19,3 +19,7 @@ It enables you to:
 
 5. Run the app!\
 `python3 manage.py runserver`
+
+## Built with
+* [Materialize](www.materializecss.com) - A front end web-framework
+* [Django](www.djangoproject.com) - For backend
