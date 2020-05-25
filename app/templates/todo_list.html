@@ -24,8 +24,9 @@
         {% for task in tasks %}
             <tbody>
                 <tr>
-                    <td class='center' style='font-size: x-large;'><span style='white-space: pre-wrap;'>{{task.task}}</span>
-                        <span class='right'>
+                    <td class='center' style='font-size: x-large;'>
+                        <span style="white-space: pre-wrap;"><center>{{task.task}}</center></span>
+                        <span class='right' style="width: max-content !important;">
                             <a href="/tasks/del/{{task.id}}" class='btn-floating btn-small green'>
                                 <i class="material-icons">check</i>
                             </a>
@@ -67,8 +68,8 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="input-field">
-                        <input type="text" class="validate" id="editTask" name="editTask" value="{{edit_task.task}}">
-                        <label for="newTask">Edit Task</label>
+                        <textarea class="materialize-textarea" id="editTask" name="editTask">{{edit_task.task}}</textarea>
+                        <label for="editTask">Edit Task</label>
                     </div>
                     <div class="input-field">
                         <input type="submit" class="btn blue accent-2" value="Edit">
