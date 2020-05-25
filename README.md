@@ -21,5 +21,5 @@ It enables you to:
 `python3 manage.py runserver`
 
 ## Built with
-* [Materialize](www.materializecss.com) - A front end web-framework
-* [Django](www.djangoproject.com) - For backend
+* [Materialize](https://www.materializecss.com) - A front end web-framework
+* [Django](https://www.djangoproject.com) - For backend
